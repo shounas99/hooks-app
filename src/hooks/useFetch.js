@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react"
 
 export const useFetch = ( url ) => {
+
+    const [state, setState] = useState({
+        data: null,
+        isLoading: true,
+        hasError: false,
+        error: null
+    })
+
     useEffect(() => {
         getFetch()
     }, [ url ])
 
-    
     const setLoadingState = () => {
         setState({
             data: null,
@@ -16,9 +23,7 @@ export const useFetch = ( url ) => {
     }
 
     const getFetch = async() => {
-
         setLoadingState()
-
         const resp = await fetch( url )
         //sleep
         await new Promise( resolve => setTimeout( resolve, 1500 ))
@@ -43,16 +48,7 @@ export const useFetch = ( url ) => {
             hasError: false,
             error: null
         })
-        console.log({ data });
     }
-
-
-    const [state, setState] = useState({
-        data: null,
-        isLoading: true,
-        hasError: false,
-        error: null
-    })
 
     return {
         data: state.data,
