@@ -7,19 +7,17 @@ import { Navbar } from "./Navbar"
 export const MainApp = () => {
   return (
     <>
-        <h1>MainApp</h1>
-        <hr />
+      <Navbar />
+      <hr />
 
-        <Navbar />
+      <Routes>    
+          <Route path="/" element={ <HomePage/> }/>
+          <Route path="about" element={ <AboutPage/> }/>
+          <Route path="login" element={ <LoginPage/> }/>
 
-        <Routes>    
-            <Route path="/" element={ <HomePage/> }/>
-            <Route path="about" element={ <AboutPage/> }/>
-            <Route path="login" element={ <LoginPage/> }/>
-
-            {/* <Route path="/*" element={ <HomePage /> }/>  */}
-            <Route path="/*" element={ <Navigate to="/about" />}/>
-        </Routes>
+          {/* <Route path="/*" element={ <HomePage /> }/>  */}
+          <Route path="/*" element={ <Navigate to="/about" />}/>
+      </Routes>
     </>
   )
 }
